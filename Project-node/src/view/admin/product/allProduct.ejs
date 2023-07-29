@@ -1,0 +1,90 @@
+<%- include('../inc/header.ejs') -%>
+		
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Product</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">All Product</li>
+							</ol>
+						</nav>
+					</div>
+					
+				</div>
+				<!--end breadcrumb-->
+			  
+				<div class="card">
+					<div class="card-body">
+						<div class="d-lg-flex align-items-center mb-4 gap-3">
+							<div class="position-relative">
+								<input type="text" class="form-control ps-5 radius-30" placeholder="Search Order"> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
+							</div>
+						  <div class="ms-auto"><a href="/product/addProduct" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add New Order</a></div>
+						</div>
+						<div class="table-responsive">
+							<table class="table mb-0">
+								<thead class="table-light">
+									<tr>
+										<th>ID</th>
+										<th>Product Name</th>
+										<th>Category</th>
+										<th>Status</th>
+										<th>Image Product</th>
+										<th>By Producter </th>
+										<th>View Details </th>										
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>		
+									<% for(let p of products) { %>
+									<tr>
+										<td>
+											<div class="d-flex align-items-center">
+												<div class="ms-2">
+													<h6 class="mb-0 font-14"><%=p.id %></h6>
+												</div>
+											</div>
+										</td>
+										<td><%=p.product_name %></td>
+										<td><%=p.category.category %></td>
+										<td><% if (p.status == "Active") { %>
+											<div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i><%= p.status %></div>
+										<% } else { %>
+											<div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class="bx bxs-circle align-middle me-1"></i><%= p.status %></div>
+										<% } %>
+
+										<td><img style="width: 100px; height: 100px;" src="/images/<%= p.product_img %>" alt=""></td>
+										<td><%=p.by_producer %></td>
+										<td>
+											<a href="/product/detailProduct/<%=p.id %>">
+												<button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button>		
+											</a>
+										</td>
+										<td>
+											<div class="d-flex order-actions">
+												<a href="/product/editProduct/<%=p.id %>" class=""><i class='bx bxs-edit'></i></a>
+												<a href="/product/deleteProduct/<%=p.id %>" class="ms-3"><i class='bx bxs-trash'></i></a>
+											</div>
+										</td>
+									</tr>
+
+									<% } %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<!--end page wrapper -->
+		
+
+<%- include('../inc/footer.ejs') -%>

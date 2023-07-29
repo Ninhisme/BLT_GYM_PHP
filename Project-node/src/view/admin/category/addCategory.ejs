@@ -1,0 +1,97 @@
+<%- include('../inc/header.ejs') -%>
+<script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+<div class="page-wrapper">
+    <div class="page-content">
+
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">eCommerce</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href=""><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+                    </ol>
+                </nav>
+            </div>
+            
+        </div>
+        <!--end breadcrumb-->
+
+      <div class="card">
+          <div class="card-body p-4">
+              <h5 class="card-title">Add New Category</h5>
+              <hr/>
+               <div class="form-body mt-4">
+                <div class="row">
+                   <div class="">
+                   <div class="border border-3 p-4 rounded" >
+                        <form id="post_category" action="/admin/postCategory" method="post">
+
+                            <div class="mb-3">
+                                <label  class="form-label">Category Title</label>
+                                <input id="category_name" name="category_name" type="text" class="form-control" >
+                            </div>
+                              
+                             <div class="col-12">
+                                <div class="ms-auto">
+                                    <button type="submit" class="btn btn-primary">Add Category</button>
+                                 </div>
+                            </div> 
+
+                        </form>
+                    
+                    </div>
+                   </div>
+                   
+                          
+                      </div> 
+                  </div>
+                  </div>
+               </div><!--end row-->
+            </div>
+          </div>
+      </div>
+
+    </div>
+</div>
+<%- include('../inc/footer.ejs') -%>
+
+<!-- <script >
+
+  $('#post_category').on('submit', function (e){
+    
+  })
+
+  function submit (){
+    console.log("aaaaa");
+    try{
+        // e=window.event || e;
+        // e.preventDefault();
+        var formData = new FormData( $('#post_category'));
+            formData.set("category", $("category_name").val());
+
+            $.ajax({
+                url: '/admin/postCategory',
+                method: 'POST',
+                data: formData,
+                success: function(response) {
+                console.log(response);
+                },
+                error: function(error) {
+                console.error(error);
+                }
+            });
+
+        
+    }
+    catch{}
+  }
+
+
+
+</script> -->

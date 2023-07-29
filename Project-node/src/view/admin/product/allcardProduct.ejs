@@ -1,0 +1,51 @@
+<%- include('../inc/header.ejs') -%>
+
+		<!--end header -->
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+
+				
+                
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 product-grid">
+                    <% for(let p of products) { %>
+					<div class="col" >
+                        
+						<div class="card">
+							<img style="width: 345px;
+                            height: 200px;" src="/images/<%= p.product_img %>" class="card-img-top" alt="...">
+							<div class="">
+								<div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">- <%=Math.round(((p.sale_price -p.main_price)/ p.sale_price) *100 ) %> %</span></div>
+							</div>
+							<div class="card-body">
+								<h6 class="card-title cursor-pointer"><%=p.product_name %></h6>
+								<div class="clearfix">
+									<p class="mb-0 float-start"><strong>134</strong> Sales</p>
+									<p class="mb-0 float-end fw-bold"><span class="me-2 text-decoration-line-through text-secondary"><%=p.main_price %> VND</span><span><%=p.sale_price %> VND</span></p>
+								</div>
+								<div class="d-flex align-items-center mt-3 fs-6">
+								  <div class="cursor-pointer">
+									<i class='bx bxs-star text-warning'></i>
+									<i class='bx bxs-star text-warning'></i>
+									<i class='bx bxs-star text-warning'></i>
+									<i class='bx bxs-star text-warning'></i>
+									<i class='bx bxs-star text-secondary'></i>
+								  </div>	
+								  <p class="mb-0 ms-auto">4.2(182)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% } %>
+				</div><!--end row-->
+                    
+
+			</div>
+		</div>
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+        <%- include('../inc/footer.ejs') -%>
